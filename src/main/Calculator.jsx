@@ -15,28 +15,28 @@ export const Calculator = () => {
         console.log(n);
     }
 
-
+        const addD = n => AddDigit(n);
+        const setOp = n => setOperation(n);
     return(
         <div className="calculator">
             <Display value={100}/>
             <Button label="AC" click={() => clearMemory()} triple/>
-            <Button label="/" click={() => setOperation()} operation/>
-            <Button label="7" click={() => AddDigit()}/>
-            <Button label="8" click={() => AddDigit()}/>
-            <Button label="9" click={() => AddDigit()}/>
-            <Button label="*" click={() => setOperation()} operation/>
-            <Button label="4" click={() => AddDigit()}/>
-            <Button label="5" click={() => AddDigit()}/>
-            <Button label="6" click={() => AddDigit()}/>
-            <Button label="-" click={() => setOperation()} operation/>
-            <Button label="1" click={() => AddDigit()}/>
-            <Button label="2" click={() => AddDigit()}/>
-            <Button label="3" click={() => AddDigit()}/>
-            <Button label="+" click={() => setOperation()} operation/>
-            <Button label="0" click={() => AddDigit()} double/>
-            <Button label="." click={() => AddDigit()}/>
-            <Button label="=" click={() => setOperation()} operation/>
-
+            <Button label="/" click={() => setOp('/')} operation/>
+            <Button label="7" click={() => addD(7)}/>
+            <Button label="8" click={() => addD(8)}/>
+            <Button label="9" click={() => addD(9)}/>
+            <Button label="*" click={() => setOp('*')} operation/>
+            <Button label="4" click={() => addD(4)}/>
+            <Button label="5" click={() => addD(5)}/>
+            <Button label="6" click={() => addD(6)}/>
+            <Button label="-" click={() => setOp('-')} operation/>
+            <Button label="1" click={() => addD(1)}/>
+            <Button label="2" click={() => addD(2)}/>
+            <Button label="3" click={() => addD(3)}/>
+            <Button label="+" click={() => setOp('+')} operation/>
+            <Button label="0" click={() => addD(0)} double/>
+            <Button label="." click={() => addD('.')}/>
+            <Button label="=" click={() => setOp('=')} operation/>
         </div>
     );
 }

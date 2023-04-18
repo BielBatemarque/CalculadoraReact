@@ -8,7 +8,7 @@ export const Button = (props) => {
             ${props.double ? 'double' : ''}
             ${props.triple ? 'triple' : ''}
         `}
-         onClick={(e) => props.click && props.click(e.target.innerHTML)}
+         onClick={() => props.click && props.click(props.label)}
         >{props.label}</button>
    );
 }
