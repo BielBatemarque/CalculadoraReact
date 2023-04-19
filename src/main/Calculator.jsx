@@ -4,47 +4,44 @@ import { Display } from '../components/Display';
 import { useState } from 'react';
 
 export const Calculator = () => {
-    const [displayValue, setDisplayValue] = useState('0');
-    const [clearDispolay, setClearDisplay] = useState(false);
-    const [operation, setOperation] = useState(null);
-    const [value, setValue] = useState([0, 0]);
-    const [current, setCurrent] = useState(0)
-
+    const [displayValue, setDisplayValue] = useState('');
     const clearMemory = () => {
-        setClearDisplay(false);
+        setDisplayValue('');
     }
 
-    const setop = (operation) => {
-        console.log(operation);
+    const setop = (n) => {
+        setDisplayValue(s => s + n);
     }
 
     const AddDigit = (n) => {
-        if(n === '.' && displayValue.includes('.')){
-            return;
-        }
+       setDisplayValue(s => s + n);
+    }
 
+    const realizaConta = (value, resultado) => {
+       resultado =  eval(value);
+        setDisplayValue(resultado);
     }
 
     return(
         <div className="calculator">
             <Display value={displayValue}/>
             <Button label="AC"click={() => clearMemory()} triple/>
-            <Button label="/" click={() => setOp('/')} operation/>
-            <Button label="7" click={() => addD(7)}/>
-            <Button label="8" click={() => addD(8)}/>
-            <Button label="9" click={() => addD(9)}/>
-            <Button label="*" click={() => setOp('*')} operation/>
-            <Button label="4" click={() => addD(4)}/>
-            <Button label="5" click={() => addD(5)}/>
-            <Button label="6" click={() => addD(6)}/>
-            <Button label="-" click={() => setOp('-')} operation/>
-            <Button label="1" click={() => addD(1)}/>
-            <Button label="2" click={() => addD(2)}/>
-            <Button label="3" click={() => addD(3)}/>
-            <Button label="+" click={() => setOp('+')} operation/>
-            <Button label="0" click={() => addD(0)} double/>
-            <Button label="." click={() => addD('.')}/>
-            <Button label="=" click={() => setOp('=')} operation/>
+            <Button label="/" click={() => setop('/')} operation/>
+            <Button label="7" click={() => AddDigit(7)}/>
+            <Button label="8" click={() => AddDigit(8)}/>
+            <Button label="9" click={() => AddDigit(9)}/>
+            <Button label="*" click={() => setop('*')} operation/>
+            <Button label="4" click={() => AddDigit(4)}/>
+            <Button label="5" click={() => AddDigit(5)}/>
+            <Button label="6" click={() => AddDigit(6)}/>
+            <Button label="-" click={() => setop('-')} operation/>
+            <Button label="1" click={() => AddDigit(1)}/>
+            <Button label="2" click={() => AddDigit(2)}/>
+            <Button label="3" click={() => AddDigit(3)}/>
+            <Button label="+" click={() => setop('+')} operation/>
+            <Button label="0" click={() => AddDigit(0)} double/>
+            <Button label="." click={() => AddDigit('.')}/>
+            <Button label="=" click={() => realizaConta(displayValue)} operation/>
         </div>
     );
 }
