@@ -1,26 +1,34 @@
 import './Calculator.css';
 import { Button } from '../components/Button';
 import { Display } from '../components/Display';
+import { useState } from 'react';
 
 export const Calculator = () => {
+    const [displayValue, setDisplayValue] = useState('0');
+    const [clearDispolay, setClearDisplay] = useState(false);
+    const [operation, setOperation] = useState(null);
+    const [value, setValue] = useState([0, 0]);
+    const [current, setCurrent] = useState(0)
+
     const clearMemory = () => {
-        console.log('limpar');
+        setClearDisplay(false);
     }
 
-    const setOperation = (operation) => {
+    const setop = (operation) => {
         console.log(operation);
     }
 
     const AddDigit = (n) => {
-        console.log(n);
+        if(n === '.' && displayValue.includes('.')){
+            return;
+        }
+
     }
 
-        const addD = n => AddDigit(n);
-        const setOp = n => setOperation(n);
     return(
         <div className="calculator">
-            <Display value={100}/>
-            <Button label="AC" click={() => clearMemory()} triple/>
+            <Display value={displayValue}/>
+            <Button label="AC"click={() => clearMemory()} triple/>
             <Button label="/" click={() => setOp('/')} operation/>
             <Button label="7" click={() => addD(7)}/>
             <Button label="8" click={() => addD(8)}/>
