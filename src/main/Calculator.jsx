@@ -1,10 +1,11 @@
 import './Calculator.css';
 import { Button } from '../components/Button';
 import { Display } from '../components/Display';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Calculator = () => {
     const [displayValue, setDisplayValue] = useState('');
+
     const clearMemory = () => {
         setDisplayValue('');
     }
