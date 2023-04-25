@@ -1,25 +1,25 @@
 import './Calculator.css';
 import { Button } from '../components/Button';
 import { Display } from '../components/Display';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export const Calculator = () => {
     const [displayValue, setDisplayValue] = useState('');
 
     const clearMemory = () => {
         setDisplayValue('');
-    }
+    };
 
     const setop = (n) => {
         setDisplayValue(s => s + n);
     }
-
+    
     const AddDigit = (n) => {
-       setDisplayValue(s => s + n);
+        setDisplayValue(s => s + n);
     }
-
+    
     const realizaConta = (value, resultado) => {
-       resultado =  eval(value);
+       resultado = eval(value);
         setDisplayValue(resultado);
     }
 
